@@ -31,6 +31,13 @@
         button:hover {
             background-color: #ff3385;
         }
+        input {
+            padding: 10px;
+            margin-top: 10px;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -42,19 +49,18 @@
         </div>
     </div>
     <script>
-        let step = 0;
         function nextQuestion(answer) {
             const quiz = document.getElementById("quiz");
-            if (step === 0 && answer === 1) {
-                quiz.innerHTML = '<h2>Người yêu em tên gì?</h2><input type="text" id="nameInput"><button onclick="checkName()">Tiếp tục</button>';
-            } else if (step === 0 && answer === 0) {
+            if (answer === 1) {
+                quiz.innerHTML = '<h2>Người yêu em tên gì?</h2><input type="text" id="nameInput"><br><button onclick="checkName()">Tiếp tục</button>';
+            } else {
                 quiz.innerHTML = '<h2>Huhu, vậy khi nào có nhớ báo anh nhé!</h2>';
             }
         }
 
         function checkName() {
-            const name = document.getElementById("nameInput").value;
-            if (name.trim().toLowerCase() === "đặng nhã quỳnh") {
+            const name = document.getElementById("nameInput").value.trim().toLowerCase();
+            if (name === "đặng nhã quỳnh") {
                 document.getElementById("quiz").innerHTML = '<h2>Em có yêu người yêu của em không?</h2><button onclick="loveMessage()">Có</button><button onclick="loveMessage()">Rất có</button>';
             } else {
                 alert("Sai rồi! Hãy nhập lại tên người yêu em nhé!");
@@ -62,7 +68,7 @@
         }
         
         function loveMessage() {
-            document.getElementById("quiz").innerHTML = '<h2>Em yêu người yêu của em thì hãy nhắn gửi đến người đó gì đi</h2><input type="text" id="message"><button onclick="finalMessage()">Gửi</button>';
+            document.getElementById("quiz").innerHTML = '<h2>Em yêu người yêu của em thì hãy nhắn gửi đến người đó gì đi</h2><input type="text" id="message"><br><button onclick="finalMessage()">Gửi</button>';
         }
         
         function finalMessage() {
